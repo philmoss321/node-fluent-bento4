@@ -39,9 +39,11 @@ function Command(os, process, CmdType, { bin, win32ext = 'exe' } = {}) {
    *
    * @returns {Promise} - resolves with stdout on success and stderr on failure
    **/
-  instance.exec = function(input, args = []) {
+  instance.exec = function(input = '', args = []) {
     if (Array.isArray(input)) {
-      input.foreEach(i => args.push(i))
+      input.map(i => args.push(i))
+    } else if (instance.args) {
+      args = instance.args
     } else {
       args.push(input)
     }

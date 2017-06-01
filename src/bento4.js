@@ -1,4 +1,4 @@
-const { Command } = require('./commands')
+const { Command, Mp4Hls } = require('./commands')
 
 module.exports = Bento4
 
@@ -48,7 +48,7 @@ function Bento4(os, process, { bin } = {}) {
   instance.mp4encrypt = Command(os, process, 'mp4encrypt', { bin: instance.bin })
   instance.mp4extract = Command(os, process, 'mp4extract', { bin: instance.bin })
   instance.mp4fragment = Command(os, process, 'mp4fragment', { bin: instance.bin })
-  instance.mp4hls = Command(os, process, 'mp4hls', { bin: instance.bin, win32ext: 'bat' })
+  instance.mp4hls = Mp4Hls(os, process, { bin: instance.bin, win32ext: 'bat' })
   instance.mp4info = Command(os, process, 'mp4info', { bin: instance.bin })
   instance.mp4mux = Command(os, process, 'mp4mux', { bin: instance.bin })
   instance.mp4rtphintinfo = Command(os, process, 'mp4rtphintinfo', { bin: instance.bin })
