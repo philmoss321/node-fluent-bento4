@@ -43,7 +43,7 @@ function Command(os, process, CmdType, { bin, win32ext = 'exe' } = {}) {
     if (Array.isArray(input)) {
       input.map(i => args.push(i))
     } else if (instance.args) {
-      args = instance.args
+      instance.args.map(i => args.push(i))
     } else {
       args.push(input)
     }
@@ -55,7 +55,6 @@ function Command(os, process, CmdType, { bin, win32ext = 'exe' } = {}) {
       return data
     })
   }
-
   return Object.freeze(instance)
 }
 
