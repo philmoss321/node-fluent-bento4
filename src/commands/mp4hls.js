@@ -25,6 +25,7 @@ function Mp4Hls(os, process, options = {}) {
     if (singleFile) {
       instance.args.push('--output-single-file')
     }
+    return instance
   }
 
   instance.input = function(input) {
@@ -33,26 +34,32 @@ function Mp4Hls(os, process, options = {}) {
     } else {
       instance.args.push(input)
     }
+    return instance
   }
 
   instance.encryptionMode = function(mode) {
     instance.args.push(`--encryption-mode=${mode}`)
+    return instance
   }
 
   instance.encryptionKey = function(key) {
     instance.args.push(`--encryption-key=${key}`)
+    return instance
   }
 
   instance.playlistName = function(name) {
     instance.args.push(`--master-playlist-name=${name}`)
+    return instance
   }
 
   instance.hlsVersion = function(version) {
     instance.args.push(`--hls-version=${version}`)
+    return instance
   }
 
   instance.outputDir = function(dir) {
     instance.args.push(`--output-dir=${dir}`)
+    return instance
   }
 
   return Object.freeze(instance)
